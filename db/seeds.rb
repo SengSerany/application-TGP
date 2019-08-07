@@ -24,7 +24,7 @@ end
 puts "J'ai crées 25 utilisateurs"
 
 25.times do 
-	Gossip.create(user_id: rand(User.first.id..User.last.id), title: Faker::Lorem.words(number: 1), content: Faker::ChuckNorris.fact)
+	Gossip.create(user_id: rand(User.first.id..User.last.id), title: Faker::Esport.player, content: Faker::ChuckNorris.fact)
 end
 
 puts "J'ai crées 25 gossips"
