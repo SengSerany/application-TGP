@@ -10,7 +10,7 @@ class GossipsController < ApplicationController
   			redirect_to gossips_path
         flash[:success] = "Gossip is validate !" 
   		else
-        flash[:danger] = "Invalid title or content"
+        flash[:danger] = "Invalid title or content."
   			render :new
   		end
   end
@@ -19,4 +19,22 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
   end
 
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(post_params)
+      redirect_to @gossip
+      flash[:success] = "The gossips has been update succefully."
+    else
+      flash[:danger] = "An error has happened, try again."
+      render :edit
+      end
+  end
+
+  def post_params
+    params.require(:gossip).permit(:title, :content)
+  end
 end

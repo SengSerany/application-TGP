@@ -5,3 +5,5 @@ Venant de <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.i
 
 
 <p> <%= @gossip.content %> </p>
+
+<p>Le gossip vous semble incorrect? Modifier le <%= link_to "Ici", edit_gossip_path(@gossip.id) %> ! </p>
