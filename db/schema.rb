@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_134300) do
+ActiveRecord::Schema.define(version: 2019_08_07_181620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "gossips", force: :cascade do |t|
     t.string "title"
@@ -27,8 +31,10 @@ ActiveRecord::Schema.define(version: 2019_08_06_134300) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
   end
 
 end
