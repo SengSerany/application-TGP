@@ -5,5 +5,5 @@
 
 	<p> <% @gossips.each do |gossip| %>
 		
-De : <%= gossip.user.first_name %>, <%= link_to "#{gossip.title}", gossip_path(gossip.id) %> <br />
+De : <%= link_to "#{gossip.user.first_name}", user_path(gossip.user.id) %>, <%= link_to "#{gossip.title}", gossip_path(gossip.id) %> <br />
 <% end %></p>
