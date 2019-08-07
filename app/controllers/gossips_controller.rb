@@ -8,9 +8,10 @@ class GossipsController < ApplicationController
   	@gossip = Gossip.create(content: params[:gossip_content], user_id: @user.id, title: params[:gossip_title])
   		if @gossip.save
   			redirect_to gossips_path
+        flash[:success] = "Gossip is validate !" 
   		else
-  			flash[:
-  			render :new, error: "Invalid title or content"
+        flash[:danger] = "Invalid title or content"
+  			render :new
   		end
   end
 end
