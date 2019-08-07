@@ -1,5 +1,7 @@
 <h1> <%= @gossip.title %> </h1>
 
-<p> De: <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user.id) %></p>
+<p> Auteur: <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user.id) %> <br />
+Venant de <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.id) %></p>
+
 
 <p> <%= @gossip.content %> </p>

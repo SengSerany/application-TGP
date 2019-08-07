@@ -18,7 +18,7 @@ end
 puts "J'ai crées 10 villes"
 
 25.times do 
-	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city_id: rand(City.first.id..City.last.id))
+	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city_id: rand(City.first.id..City.last.id), email: Faker::Internet.email, age: rand(18..70), description: Faker::Lorem.paragraphs)
 end
 
 puts "J'ai crées 25 utilisateurs"
