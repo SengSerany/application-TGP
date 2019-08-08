@@ -3,8 +3,13 @@ class GossipsController < ApplicationController
   	@gossips = Gossip.all
   end
 
+  def new
+    @gossip = Gossip.new
+  end
+
   def create
-  	@user = User.create(first_name: params[:gossip_user])
+    @city = City.create(name: params[:city_name])
+  	@user = User.create(first_name: params[:gossip_user], city_id: @city.id)
   	@gossip = Gossip.create(content: params[:gossip_content], user_id: @user.id, title: params[:gossip_title])
   		if @gossip.save
   			redirect_to gossips_path
