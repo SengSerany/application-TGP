@@ -43,9 +43,9 @@
     </ul>
 
     <form class="form-inline my-2 my-lg-0">
-         <% if current_user == nil %> <%= link_to "Connexion", new_session_path %> 
+         <% if current_user == nil %> <%= link_to "Connexion", new_session_path, :class => "btn btn-primary" %> 
          <% else %>
-       <%= link_to "Deconnecter", session_path(session.id), method: :delete %>
+       <%= link_to "Deconnecter", session_path(session.id), method: :delete, :class => "btn btn-primary" %>
        <% end %>
     </form>
 
