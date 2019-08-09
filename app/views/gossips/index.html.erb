@@ -1,9 +1,23 @@
 <h1>The gossip project</h1>
+<div class="container">
 	<p> Tu veux creer un potin?
 	<a <%= link_to "Clique ici", new_gossip_path %> </a></p>
 
+<% n = 1 %>
+ <div class="row">
+	<% @gossips.each do |gossip| %>
 
-	<p> <% @gossips.each do |gossip| %>
-		
-De : <%= link_to "#{gossip.user.first_name}", user_path(gossip.user.id) %>, <%= link_to "#{gossip.title}", gossip_path(gossip.id) %> <br />
-<% end %></p>
+    <div class="col-sm">
+		<div class="card border-info mb-3" style="max-width: 18rem;">
+		  <div class="card-header">Gossip <%= n %></div>
+		  <div class="card-body text-primary">
+		    <h5 class="card-title">De : <%= link_to "#{gossip.user.first_name}", user_path(gossip.user.id) %></h5>
+		    <p class="card-text"><%= link_to "#{gossip.title}", gossip_path(gossip.id) %></p>
+		 </div>
+ 		</div>
+ 	</div>
+ <% n = n + 1 %>
+	<% end %>
+	</div>
+</div>
+
