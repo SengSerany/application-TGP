@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	get '/', to: 'gossips#index'
+	get '/users', to: 'gossips#index'
   resources :sessions, only: [:new, :create, :destroy]
   resources :cities
   resources :users
