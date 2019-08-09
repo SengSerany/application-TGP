@@ -23,7 +23,7 @@
         <div class="form">
             <div class="col-sm">
             	<%= label_tag 'Ville'%>
-                <%= select_tag :city, options_from_collection_for_select(City.all,"id", "name"), class:'form-control' %>
+                <%= text_field_tag('city_name', '', class:'form-control', required:'true',placeholder:"Ville", autofocus:'')%>
             </div><br />
             <div class="col-sm">
             	<%= label_tag 'Age'%>
