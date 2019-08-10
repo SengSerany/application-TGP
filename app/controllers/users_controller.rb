@@ -15,10 +15,11 @@ class UsersController < ApplicationController
     if City.exists?(:name => params[:city][:city_name])
       @city = City.find_by_name(params[:city][:city_name])
     else
-      @city = City.create(params[city_params])
+      @city = City.create(name: params[:city][:city_name])
+
     end
     
-      @user = User.create(password: params[:user], city: @city )
+      @user = User.create(first_name: params[:first_name], last_name: params[:last_name], age: params[:age], description: params[:description], password: params[:password], email: params[:email], city: @city )
       if @user.save
         log_in @user
         flash[:success] = "User successfully created"
