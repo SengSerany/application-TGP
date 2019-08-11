@@ -12,12 +12,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.create(user: User.find(session[:user_id]), commentable: if Gossip.find(params[:gossip_id]), content: comment_params[:content]))
+    @comment = @commentable.comments.create(user: User.find(session[:user_id]), commentable: Gossip.find(params[:gossip_id]), content: comment_params[:content])
     
     if @comment.save
       flash[:success] = "Ton commentaire a bien été posté !"
       redirect_to gossip_path(params[:gossip_id])
-
+      
     else
       flash[:danger] = "Un problème est survenue, essaye encore !"
       redirect_to gossip_path(params[:gossip_id])
