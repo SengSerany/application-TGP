@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:show]
+  include GossipsHelper
 
   def index
   	@gossips = Gossip.all
@@ -25,15 +26,15 @@ class GossipsController < ApplicationController
   end
 
   def show
-    @gossip = Gossip.find(params[:id])
+    @gossip = current_gossip
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
+    @gossip = current_gossip
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
+    @gossip = current_gossip
     if @gossip.update(post_params)
       redirect_to @gossip
       flash[:success] = "The gossips has been update succefully."

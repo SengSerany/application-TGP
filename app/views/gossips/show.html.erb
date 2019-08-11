@@ -1,5 +1,5 @@
 <h1> <%= @gossip.title %> </h1>
-
+<div class="container">
 <p> Auteur: <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user.id) %> <br />
 Venant de <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.id) %></p>
 
@@ -9,3 +9,15 @@ Venant de <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.i
 <p>Le gossip vous semble incorrect? Modifier le <%= link_to "Ici", edit_gossip_path(@gossip.id) %> ! </p>
 
 <%= link_to "Supprimer le gossip", @gossip,  method: :delete, data: { confirm: 'Are you sure?' } %>
+ <br/><br/>
+<h3>Commentaire</h3>
+
+<%= form_for [@gossip, Comment.new] do |f| %>
+<%= f.text_area :content, placeholder: "Ajouter un commentaire", class: 'form-control' %>
+<%= f.submit "Valider", class: 'btn btn-primary' %>
+<% end %>
+
+<ul>
+  <%= render(partial: 'comments/comment', collection: @gossip.comments) %>
+</ul>
+</div>
